@@ -22,5 +22,3 @@ This a CUNYFirst Enrollment bot that notifies you through text and email when th
 -Open a console window in the same folder as the bot. Type **python cunyenrollment.py**. After a brief moment a Firefox window will open and the bot the will do the rest. **DO not alter the firefox window or else the bot will stop working. ENJOY.**
 
 ![Bot in Action](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/Screen%20Shot%202016-11-23%20at%2011.36.16%20AM.png?raw=true "CUNYFirst Enrollment Bot")
-
-****Android app coming soon!*****
