@@ -14,3 +14,5 @@ This a CUNYFirst bot that notifies you through text and email when there are cha
     
 # How to Run
 -open a console window in the same folder as the script. Type 'python cunyenrollment.py'. After a biref moment a Firefox window will open and the bot the will do the rest. **DO not alter the window or else the bot will stop working. Also for now the bot does not work with combined section classes where there is a lab and lecture. ENJOY.**
+
+![Bot in Action](../Screen Shot 2016-11-23 at 11.36.16 AM.png?raw=true "CUNYFirst Enrollment Bot")
