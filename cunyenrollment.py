@@ -65,18 +65,8 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
                 status = self.driver.find_element_by_xpath(
                     "//div[@id='win0divDERIVED_REGFRM1_SSR_STATUS_LONG$" + str(i) + "']/div/img").get_attribute('alt')
                 latestshoppingcart[classname] = status
-            modified, same = self.dict_compare(self.shoppingcart, latestshoppingcart)
-            if len(same) == len(self.shoppingcart):
-                same.clear()
-                continue
-            elif len(self.shoppingcart) > len(latestshoppingcart) or len(self.shoppingcart) < len(latestshoppingcart):
-                print('you added or removed classes')
-                self.shoppingcart.clear()
-                self.shoppingcart = latestshoppingcart.copy()
-                print(self.shoppingcart)
-                latestshoppingcart.clear()
-                continue
-            elif bool(modified):
+            modified = self.dict_compare(self.shoppingcart, latestshoppingcart)
+            if bool(modified):
                 print(modified)
                 self.send_email(user=self.gmailuser, pwd=self.gmailpass, recipient=self.recipient,
                                 subject='CUNYFIRST ENROLLMENT SHOPPING CART', body=str(modified))
@@ -86,14 +76,22 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
                 self.shoppingcart = latestshoppingcart.copy()
                 latestshoppingcart.clear()
                 continue
+            elif len(self.shoppingcart) > len(latestshoppingcart) or len(self.shoppingcart) < len(latestshoppingcart):
+                print('you added or removed classes')
+                self.shoppingcart.clear()
+                self.shoppingcart = latestshoppingcart.copy()
+                print(self.shoppingcart)
+                latestshoppingcart.clear()
+                continue
+            else:
+                continue
 
     def dict_compare(self, d1, d2):
         d1_keys = set(d1.keys())
         d2_keys = set(d2.keys())
         intersect_keys = d1_keys.intersection(d2_keys)
         modified = {o : (d1[o], d2[o]) for o in intersect_keys if d1[o] != d2[o]}
-        same = set(o for o in intersect_keys if d1[o] == d2[o])
-        return modified, same
+        return modified
 
     def textmyself(self, message):
             twilioCli= TwilioRestClient(self.accountsid, self.authtoken)
