@@ -2,7 +2,9 @@
 # CUNYFirst Enrollment Bot
 This a CUNYFirst Enrollment bot that notifies you through text and email when there are changes in your enrollment shopping cart. Use this bot and you won't have to sit at your computer and be stressed about not knowing when a class opens up. The bot works by automatically logging you in and heading to your shopping cart. Once at the shopping cart the bot will refresh every 60 seconds by default althogh (you can change that variable in the code). The text/email will show the class section followed by the original status and the latest status of the class.
 ![CUNYFIRST TEXT UPDATE](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/TextUpdate.PNG?raw=true "CUNYFIRST TEXT UPDATE")
+---------------------------------------------------------------------------------------------------------------------------
 ![CUNYFIRST EMAIL UPDATE](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/emailupdate.png?raw=true "CUNYFIRST EMAIL UPDATE")
+---------------------------------------------------------------------------------------------------------------------------
 ![CUNYFIRST Course Closed to Open](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/Course_closed_to_open.png?raw=true "CUNYFIRST Course Closed to Open")
 
 # Requirements
