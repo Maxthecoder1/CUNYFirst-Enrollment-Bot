@@ -13,18 +13,18 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
     def __init__(self):
         '''change these variables to fit your needs'''
         '''Go to twilio.com and create a free account'''
-        self.accountsid = '??????????????'                       # accountsid for twilio account, required to receive texts
-        self.authtoken = '????????????'                          # authtoken for twilio account, required to receive texts
-        self.mycellphone = '????????'                            # your cell phone number
-        self.twiliocell = '???????'                              # twilio cellnumber that will be used to send texts to your actual phone
-        self.username = '????????'                               # CUNYFIRST USERNAME
-        self.password = '????????'                               # CUNYFIRST PASSWORD
+        self.accountsid =  '??????????'                # accountsid for twilio account, required to receive texts
+        self.authtoken =   '??????????'                # authtoken for twilio account, required to receive texts
+        self.mycellphone = '??????????'                # your cell phone number
+        self.twiliocell =  '??????????'                # twilio cellnumber that will be used to send texts to your actual phone
+        self.username =    '??????????'                # CUNYFIRST USERNAME
+        self.password =    '??????????'                # CUNYFIRST PASSWORD
         '''In order to receive an email you must go myaccount.google.com/security and scroll all the way to he bottom.
            Then go to where it says 'Allow less secure apps: ON' and check OFF. You should get an email about the change '''
-        self.gmailuser= '???????????'                            # GMAIL USER
-        self.gmailpass= '??????????'                             # GMAIL PASSWORD
-        self.recipient = '????????????'                          # Recipient email address (most likely your email)
-        self.interval = 60                                       # refresh interval in seconds
+        self.gmailuser =    '???????????'              # GMAIL USER
+        self.gmailpass =    '??????????'               # GMAIL PASSWORD
+        self.recipient =    '??????????'               # Recipient email address (most likely your email)
+        self.interval = 60                             # refresh interval in seconds
 
         '''Add shopping cart link is very important to this script. Go to CUNYFIRST, Click Enroll. Then choose your Term.
            Once you are are on the Shopping Cart Page, Right + Click on 'add' and Click on 'Copy Link Location'.
