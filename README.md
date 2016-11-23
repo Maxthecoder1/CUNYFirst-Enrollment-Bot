@@ -23,5 +23,7 @@ This a CUNYFirst Enrollment bot that notifies you through text and email when th
 
 ![Bot in Action](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/Screen%20Shot%202016-11-23%20at%2011.36.16%20AM.png?raw=true "CUNYFirst Enrollment Bot")
 ----------------------------------------------------------------------------------------------------------------------------
+![Bot in Action3](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/textupdate2.PNG?raw=true "CUNYFirst Enrollment Bot")
+----------------------------------------------------------------------------------------------------------------------------
 ![Bot in Action2](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/openclosedopen.png?raw=true "CUNYFirst Enrollment Bot")
 ----------------------------------------------------------------------------------------------------------------------------
