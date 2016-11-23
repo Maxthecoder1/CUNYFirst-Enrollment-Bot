@@ -1,5 +1,7 @@
 # CUNYFirst-Enrollment-Bot
 This a CUNYFirst bot that notifies you through text and email when there are changes in your enrollment shopping cart. Use this bot and you won't have to sit at your computer and be stressed about not knowing when a class opens up. The bot works by automatically logging you in and heading to your shopping cart. Once at the shopping cart the bot will refresh every 60 seconds by default although you can change that variable in the code.
+![CUNYFIRST TEXT UPDATE](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/TextUpdate.PNG?raw=true "CUNYFIRST TEXT UPDATE")
+![CUNYFIRST Course Closed to Open](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/Course_closed_to_open.png?raw=true "CUNYFIRST Course Closed to Open")
 
 # Requirements
 1. Make sure you have python 3.5.1 installed on your computer. Go into your 'Advanced System Settings' and add the python.exe to your Path if you have not already done so. Also add the location of geckodriver.exe(which I included with the bot) to your PATH variable. The bot will not work without the location in the PATH variable.
