@@ -46,7 +46,7 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
         shoppingcartlen = len(self.driver.find_elements_by_xpath("//table[@id='SSR_REGFORM_VW$scroll$0']/tbody/tr")) - 2
         self.shoppingcart = {}
         for i in range(0, shoppingcartlen):
-            classname = self.driver.find_element_by_name('P_CLASS_NAME$' + str(i)).text  # does not work for joined sections (lecture, and lab)
+            classname = self.driver.find_element_by_xpath("//span[@id='P_CLASS_NAME$span$" + str(i) + "']").text
             status = self.driver.find_element_by_xpath(
                 "//div[@id='win0divDERIVED_REGFRM1_SSR_STATUS_LONG$" + str(i) + "']/div/img").get_attribute('alt')
             self.shoppingcart[classname] = status
@@ -61,7 +61,7 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
             latestshoppingcartclasses = len(
                 self.driver.find_elements_by_xpath("//table[@id='SSR_REGFORM_VW$scroll$0']/tbody/tr")) - 2
             for i in range(0, latestshoppingcartclasses):
-                classname = self.driver.find_element_by_name('P_CLASS_NAME$' + str(i)).text
+                classname = self.driver.find_element_by_xpath("//span[@id='P_CLASS_NAME$span$" + str(i) + "']").text
                 status = self.driver.find_element_by_xpath(
                     "//div[@id='win0divDERIVED_REGFRM1_SSR_STATUS_LONG$" + str(i) + "']/div/img").get_attribute('alt')
                 latestshoppingcart[classname] = status
