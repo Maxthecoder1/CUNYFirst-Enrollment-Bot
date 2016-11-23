@@ -17,7 +17,8 @@ This a CUNYFirst Enrollment bot that notifies you through text and email when th
 4. Go to CUNYFIRST, Click Enroll. Then choose your Term. Once you are are on the Shopping Cart Page, Right + Click on the 'add' button and Click on 'Copy Link Location'.  Then paste the link next to self.addshoppingcartlink in the code. It should look like the link below:
 
     self.addshoppingcartlink = 'https://hrsa.cunyfirst.cuny.edu/psc/cnyhcprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL?Page=SSR_SSENRL_CART&Action=A&ACAD_CAREER=UGRD&EMPLID=12345678&ENRL_REQUEST_ID=&INSTITUTION=BKL01&STRM=1172'
-![CUNYFIRST Add Link](hhttps://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/addlinkcart.png?raw=true "CUNYFIRST Add Link")
+    
+![CUNYFIRST Add Link](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/addlinkcart.png?raw=true "CUNYFIRST Add Link")
     
 # How to Run
 -Open a console window in the same folder as the bot. Type **python cunyenrollment.py**. After a brief moment a Firefox window will open and the bot the will do the rest. **DO not alter the firefox window or else the bot will stop working. ENJOY.**
