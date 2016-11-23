@@ -23,7 +23,8 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
            Then go to where it says 'Allow less secure apps: ON' and check OFF. You should get an email about the change '''
         self.gmailuser= '???????????'                            # GMAIL USER
         self.gmailpass= '??????????'                             # GMAIL PASSWORD
-        self.recipient = '????????????'                          # Recipient email address
+        self.recipient = '????????????'                          # Recipient email address (most likely your email)
+        self.interval = 60                                       # refresh interval in seconds
 
         '''Add shopping cart link is very important to this script. Go to CUNYFIRST, Click Enroll. Then choose your Term.
            Once you are are on the Shopping Cart Page, Right + Click on 'add' and Click on 'Copy Link Location'.
@@ -53,9 +54,8 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
     '''While the script is running do not close or mess with the firefox window that the script opens'''
     def run(self):
         while True:
-            interval = 60
-            print("refresh in {0} seconds".format(interval))
-            time.sleep(interval)
+            print("refresh in {0} seconds".format(self.interval))
+            time.sleep(self.interval)
             self.driver.get(self.addshoppingcartlink)
             latestshoppingcart = {}
             latestshoppingcartclasses = len(
