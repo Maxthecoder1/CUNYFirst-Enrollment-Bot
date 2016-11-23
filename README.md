@@ -10,9 +10,10 @@ This a CUNYFirst Enrollment bot that notifies you through text and email when th
 # Requirements
 1. Make sure you have python 3.5.1 installed on your computer. Go into your 'Advanced System Settings' and add the python.exe to your Path if you have not already done so. Also add the location of geckodriver.exe(which I included with the bot) to your PATH variable. The bot will not work without the location in the PATH variable.
 
-2. Go to 'https://twilio.com' and sign up for a free account. Once you are verified and have gotten a twilio number, take the twilio number, auth token, and accountsid, and put them in the code with quotes next to the variables that have the same name. This will allow you to receives text updates when your classes open up.
+2. Go to 'https://twilio.com' and sign up for a free account. Once you are verified and have gotten a twilio number, take the **twilio number, auth token, and accountsid**, and put them in the code with quotes next to the variables that have the same name. This will allow you to receives text updates when your classes open up.
 
 3. Go to 'https://myaccount.google.com/security' and scroll all the way to he bottom. Then go to where it says 'Allow less secure apps: ON' and check OFF. You should get an email about the change. Go ahead and update the code to have your gmail email/user and password to send emails to your yourself
+![Google Account](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/screenshots/myaccountgoogle.png?raw=true "Google Account Security")
 
 4. Go to CUNYFIRST, Click Enroll. Then choose your Term. Once you are are on the Shopping Cart Page, Right + Click on the 'add' button and Click on 'Copy Link Location'.  Then paste the link next to self.addshoppingcartlink in the code. It should look like the link below:
 
