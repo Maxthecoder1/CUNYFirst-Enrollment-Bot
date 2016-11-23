@@ -96,6 +96,7 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
     def textmyself(self, message):
             twilioCli= TwilioRestClient(self.accountsid, self.authtoken)
             twilioCli.messages.create(body=message, from_=self.twiliocell, to=self.mycellphone)
+            print("successfully sent the text")
 
     def send_email(self, user, pwd, recipient, subject, body):
         gmail_user = user
