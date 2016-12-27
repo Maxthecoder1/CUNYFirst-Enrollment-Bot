@@ -8,7 +8,7 @@ This a CUNYFirst Enrollment bot that notifies you through text and email when th
 ![CUNYFIRST Course Closed to Open](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/screenshots/Course_closed_to_open.png?raw=true "CUNYFIRST Course Closed to Open")
 
 # Requirements
-1. Make sure you have python 3.5.1 installed on your computer. Go into your 'Advanced System Settings' and add the python.exe to your Path if you have not already done so. Also add the folder location of geckodriver.exe(which I included with the bot) to your PATH variable. The bot will not work without the location in the PATH variable for your system. Restart your computer after you make changes to your PATH variable.
+1. Make sure you have python 3.5.1 installed on your computer. Go into your 'Advanced System Settings' and add the python.exe to your Path if you have not already done so. Also add the folder location of phantomjs.exe(which I included with the bot) to your PATH variable. The bot will not work without the location in the PATH variable for your system. Restart your computer after you make changes to your PATH variable.
 
 2. Go to 'https://twilio.com' and sign up for a free account. Once you are verified and have gotten a twilio number, take the **twilio number, auth token, and accountsid**, and put them in the code with quotes next to the variables that have the same name. This will allow you to receives text updates when your classes open up.
 ![Twilio Info](https://www.twilio.com/blog/wp-content/uploads/2016/08/oy1Q-OazNr90Wl8URRpS0KweZBf8I285WuRzabOWpLUvNGY18ftMbdmlRLckbQHS1RibmdszmnkGLrnO2pc1vDJyor1l74M-Eu_Dl45eDUUBXySUQfOzMwPWj04HSvSVyPr7B2X0.png?raw=true "Twilio Info")
@@ -23,7 +23,7 @@ This a CUNYFirst Enrollment bot that notifies you through text and email when th
 ![CUNYFIRST Add Link](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/screenshots/addlinkcart.png?raw=true "CUNYFIRST Add Link")
     
 # How to Run
--Open a console/terminal window in the same folder as the bot. Type **python cunyenrollment.py**. After a brief moment a Firefox window will open and the bot the will do the rest. **DO not alter the firefox window or else the bot will stop working. ENJOY.**
+-Make sure you add phatomjs.exe to your System PATH variable or else the bot will not work. Open a console/terminal window in the same folder as the bot. Type **python cunyenrollment.py**. After a brief moment a Firefox window will open and the bot the will do the rest.
 
 ![Bot in Action](https://github.com/Maxthecoder1/CUNYFirst-Enrollment-Bot/blob/master/screenshots/Screen%20Shot%202016-11-23%20at%2011.36.16%20AM.png?raw=true "CUNYFirst Enrollment Bot")
 ----------------------------------------------------------------------------------------------------------------------------
