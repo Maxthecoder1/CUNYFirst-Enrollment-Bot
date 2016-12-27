@@ -32,7 +32,7 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
         self.addshoppingcartlink = 'https://hrsa.cunyfirst.cuny.edu/psc/cnyhcprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_CART.GBL?Page=SSR_SSENRL_CART&Action=A&ACAD_CAREER=UGRD&EMPLID=12345678&ENRL_REQUEST_ID=&INSTITUTION=BKL01&STRM=1172'
 
         print("Starting Firefox and heading to CUNYFIRST")
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.PhantomJS()
         self.driver.get('https://home.cunyfirst.cuny.edu')
         login = WebDriverWait(self.driver, timeout=30).until(
             EC.presence_of_element_located((By.NAME, "login")))
@@ -47,84 +47,59 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
         self.shoppingcart = {}
         for i in range(0, shoppingcartlen):
             classname = self.driver.find_element_by_id("win0divP_CLASS_NAME$" + str(i)).text
+            print(classname)
             status = self.driver.find_element_by_xpath(
                 "//div[@id='win0divDERIVED_REGFRM1_SSR_STATUS_LONG$" + str(i) + "']/div/img").get_attribute('alt')
             self.shoppingcart[classname] = status
 
+    '''While the script is running do not close or mess with the firefox window that the script opens'''
+
     def run(self):
-        while True:
-            print("refresh in {0} seconds".format(self.interval))
-            time.sleep(self.interval)
-            self.driver.get(self.addshoppingcartlink)
-            latestshoppingcart = {}
-            latestshoppingcartclasses = len(
-                self.driver.find_elements_by_xpath("//table[@id='SSR_REGFORM_VW$scroll$0']/tbody/tr")) - 2
-            for i in range(0, latestshoppingcartclasses):
-                classname = self.driver.find_element_by_id("win0divP_CLASS_NAME$" + str(i)).text
-                status = self.driver.find_element_by_xpath(
-                    "//div[@id='win0divDERIVED_REGFRM1_SSR_STATUS_LONG$" + str(i) + "']/div/img").get_attribute('alt')
-                latestshoppingcart[classname] = status
-            modified = self.dict_compare(self.shoppingcart, latestshoppingcart)
-            if bool(modified):
-                messages= []
-                if ('Open', 'Closed') in modified.values():
-                    messages = self.autoenroll(modified)
-                    print(messages)
+        try:
+            while True:
+                print("refresh in {0} seconds".format(self.interval))
+                time.sleep(self.interval)
+                self.driver.get(self.addshoppingcartlink)
+                latestshoppingcart = {}
+                latestshoppingcartclasses = len(
+                    self.driver.find_elements_by_xpath("//table[@id='SSR_REGFORM_VW$scroll$0']/tbody/tr")) - 2
+                for i in range(0, latestshoppingcartclasses):
+                    classname = self.driver.find_element_by_id("win0divP_CLASS_NAME$" + str(i)).text
+                    status = self.driver.find_element_by_xpath(
+                        "//div[@id='win0divDERIVED_REGFRM1_SSR_STATUS_LONG$" + str(i) + "']/div/img").get_attribute('alt')
+                    latestshoppingcart[classname] = status
+                modified = self.dict_compare(self.shoppingcart, latestshoppingcart)
+                if bool(modified):
+                    print(modified)
+                    messages = []
+                    for key in modified:
+                        message = key + ': ' + modified[key][0] + ' to ' + modified[key][1] + '\n'
+                        messages.append(str(message))
                     self.send_email(user=self.gmailuser, pwd=self.gmailpass, recipient=self.recipient,
                                     subject='CUNYFIRST ENROLLMENT SHOPPING CART', body=messages)
                     self.textmyself(messages)
                     modified.clear()
                     self.shoppingcart.clear()
                     self.shoppingcart = latestshoppingcart.copy()
+                    latestshoppingcart.clear()
+                    continue
+                elif len(self.shoppingcart) > len(latestshoppingcart) or len(self.shoppingcart) < len(latestshoppingcart):
+                    print('you added or removed classes from your shopping cart')
+                    self.textmyself('you added or removed classes from your shopping cart')
+                    self.send_email(user=self.gmailuser, pwd=self.gmailpass, recipient=self.recipient,
+                                    subject='CUNYFIRST Cart Update', body='you added or removed classes from your shopping cart')
+                    self.shoppingcart.clear()
+                    self.shoppingcart = latestshoppingcart.copy()
+                    print(self.shoppingcart)
                     latestshoppingcart.clear()
                     continue
                 else:
-                    for key in modified:
-                        message = str(key + ': ' + modified[key][0] + ' to ' + modified[key][1] + '\n')
-                        messages.append(message)
-                    print(messages)
-                    self.send_email(user=self.gmailuser, pwd=self.gmailpass, recipient=self.recipient,
-                                    subject='CUNYFIRST ENROLLMENT SHOPPING CART', body=messages)
-                    self.textmyself(messages)
-                    modified.clear()
-                    self.shoppingcart.clear()
-                    self.shoppingcart = latestshoppingcart.copy()
-                    latestshoppingcart.clear()
                     continue
-            elif len(self.shoppingcart) > len(latestshoppingcart) or len(self.shoppingcart) < len(latestshoppingcart):
-                print('you added or removed classes from your shopping cart')
-                self.shoppingcart.clear()
-                self.shoppingcart = latestshoppingcart.copy()
-                print(self.shoppingcart)
-                latestshoppingcart.clear()
-                continue
-            else:
-                continue
-
-    def autoenroll(self, dictionary):
-        messages = []
-        step2 = self.driver.find_element_by_name('DERIVED_REGFRM1_LINK_ADD_ENRL$82$')
-        step2.click()
-        finishenrolling = WebDriverWait(self.driver, timeout=30).until(
-            EC.presence_of_element_located((By.NAME, 'DERIVED_REGFRM1_SSR_PB_SUBMIT')))
-        finishenrolling.click()
-        WebDriverWait(self.driver, timeout=30).until(EC.presence_of_element_located((By.ID,
-                                                                                     'win0divDERIVED_REGFRM1_SS_MESSAGE_LONG$0')))
-        results = {}
-        for i in range(0, len(dictionary)):
-            classname = self.driver.find_element_by_id("win0divR_CLASS_NAME$" + str(i)).text
-            message = self.driver.find_element_by_id("win0divDERIVED_REGFRM1_SS_MESSAGE_LONG$" + str(i)).text
-            results[classname] = message
-        for key in dictionary.keys():
-            if ('Closed', 'Open') == dictionary[key]:
-                keysplit = key.split('-')
-                keysplit = keysplit[0]
-                message = str(key + ':' + "Closed to Open. Enrollment Result: " + results[keysplit] + '\n')
-                messages.append(message)
-            else:
-                message = str(key + ': ' + dictionary[key][0] + ' to ' + dictionary[key][1] + '\n')
-                messages.append(message)
-        return messages
+        except Exception as e:
+            self.textmyself(e)
+            self.send_email(user=self.gmailuser, pwd=self.gmailpass, recipient=self.recipient,
+                                    subject='CUNYFIRST Script Died', body=e)
+            sys.exit(6)
 
 
     def dict_compare(self, d1, d2):
@@ -155,11 +130,12 @@ class CunyFirstEnrollmentShoppingCartNotifier(object):
             server.login(gmail_user, gmail_pwd)
             server.sendmail(FROM, TO, message)
             server.close()
-            print('successfully sent the email')
+            print('successfully sent the mail')
         except:
-            print("failed to send email")
+            print("failed to send mail")
 
 
 if __name__ == "__main__":
     a = CunyFirstEnrollmentShoppingCartNotifier()
     a.run()
+
